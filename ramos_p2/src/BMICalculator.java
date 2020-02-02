@@ -22,6 +22,14 @@ public class BMICalculator{
 		System.out.println("You will have the option to calculate your BMI using the imperial system (A) or using the metric system (B).");
 		System.out.print("Please enter your option: ");
 		BMICalculator.option = input.nextLine();
+		if(!(BMICalculator.option.compareTo("A") == 0 || BMICalculator.option.compareTo("B") == 0))
+		{
+			while(!(BMICalculator.option.compareTo("A") == 0 || BMICalculator.option.compareTo("B") == 0))
+			{
+				System.out.print("Please enter a valid option (A or B): ");
+				BMICalculator.option = input.nextLine();
+			}
+		}
 		System.out.println();
 	}
 	
@@ -40,11 +48,8 @@ public class BMICalculator{
 		double w = input.nextDouble();
 		if(w < 0)
 		{
-			while(w < 0)
-			{
-				System.out.print("Please enter a positive value only: ");
-				w = input.nextDouble();
-			}
+			System.out.println("Invalid input. Program will exit.");
+			System.exit(0);
 		}
 		setWeight(w);
 		
@@ -52,11 +57,8 @@ public class BMICalculator{
 		double h = input.nextDouble();
 		if(h < 0)
 		{
-			while(h < 0)
-			{
-				System.out.print("Please enter a positive value only: ");
-				h = input.nextDouble();
-			}
+			System.out.println("Invalid input. Program will exit.");
+			System.exit(0);
 		}
 		setHeight(h);
 	}
@@ -70,8 +72,8 @@ public class BMICalculator{
 		{
 			while(w < 0)
 			{
-				System.out.print("Please enter a positive value only: ");
-				w = input.nextDouble();
+				System.out.println("Invalid input. Program will exit.");
+				System.exit(0);
 			}
 		}
 		setWeight(w);
@@ -82,8 +84,8 @@ public class BMICalculator{
 		{
 			while(h < 0)
 			{
-				System.out.print("Please enter a positive value only: ");
-				h = input.nextDouble();
+				System.out.println("Invalid input. Program will exit.");
+				System.exit(0);
 			}
 		}
 		setHeight(h);
@@ -161,10 +163,18 @@ public class BMICalculator{
 	{
 		System.out.printf("%nYour BMI value is: %.2f", getBmi());
 		System.out.printf("%nYour BMI Category: %s", getBmiCategory());
+		
+		System.out.println("\n\n");
+		System.out.println("BMI Category Chart:");
+		System.out.println("-------------------------------------------------");
+		System.out.println("Less than 18.5:		Underweight");
+		System.out.println("18.5 - 24.9: 		Normal Weight");
+		System.out.println("25 - 29.9: 		Overweight");
+		System.out.println("30.0 and greater:	Obese");
 	}
 
 	/*
-	 * 
+	 * To test that each function works...
 	 */
 	public static void main(String[] args) {
 		//BMICalculator app = new BMICalculator();
